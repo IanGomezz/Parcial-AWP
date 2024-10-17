@@ -35,18 +35,24 @@ abrirDialog.addEventListener('click' , function(){
 
   cerrarDialog.addEventListener('click',function()
     {
-        dialogo.close();
+      borrarInputDialog()
     });
 
 
 
 
 const btnPublicar=document.getElementById('boton-publicar')
+
 function borrarInputDialog(){
-  //Aca debo resetear los inputs
+    camara.style.display='block'
+    imagenPreview.src=''
+    inputDescripcion.value='';
+    dialogo.close()
 }
 btnPublicar.addEventListener('click',()=>{
 
+  if(inputCamara.value!=='')
+  {
   const canvas = document.createElement('canvas') // Lienzo 
     canvas.width = imagenPreview.width
     canvas.height = imagenPreview.height
@@ -58,7 +64,8 @@ btnPublicar.addEventListener('click',()=>{
     const imagenBase64 = canvas.toDataURL("image/webp").toString();
     const descripcion = inputDescripcion.value
     console.log(imagenBase64)
-    
+    const fechaPublicado=new Date();
+
     //Metodo POST
   const nuevaPublicacion=
     {
@@ -66,6 +73,8 @@ btnPublicar.addEventListener('click',()=>{
       descripcion: descripcion,
       id: "",
       idCuenta: "1",
+      fecha:fechaPublicado.toLocaleDateString(),
+      
     }
 
     
@@ -87,14 +96,19 @@ btnPublicar.addEventListener('click',()=>{
   .then(()=>{
     obtenerDatos()
   })
+}
+else{
+  alert("Debes seleccionar una foto");
+}
   
-
+  borrarInputDialog()
 
 })
 
 
 // Función para obtener cuentas y publicaciones
 async function obtenerDatos() {
+  LimpiarPublicaciones()
   try {
     // Obtener las cuentas
     const cuentasResponse = await fetch(cuentasUrl);
@@ -118,7 +132,11 @@ async function obtenerDatos() {
 
 
 
+const publicacionesContainer = document.getElementById('publicaciones-container');
 
+function LimpiarPublicaciones (){
+publicacionesContainer.innerHTML='';
+}
 
 
 
@@ -147,8 +165,15 @@ function getPublicaciones(cuentas, publicaciones) {
         nombreCuenta.classList.add('nombre-cuenta');
         nombreCuenta.textContent = cuenta ? cuenta.user : 'Usuario Desconocido'; // Mostrar el nombre de la cuenta o "Usuario Desconocido"
 
+
+        const fechaPublicacion=document.createElement('h4');
+        fechaPublicacion.classList.add('fecha-publicacion')
+        fechaPublicacion.textContent=publicacion ? publicacion.fecha : 'Fecha desconocida;'
+
+
         cabeceraDiv.appendChild(imagenPerfil);
         cabeceraDiv.appendChild(nombreCuenta);
+        
 
         // Crear el div de imagen de la publicación
         const imagenDiv = document.createElement('div');
@@ -173,11 +198,14 @@ function getPublicaciones(cuentas, publicaciones) {
 
         // Añadir los divs internos al div principal
         publicacionDiv.appendChild(cabeceraDiv);
+        
         publicacionDiv.appendChild(imagenDiv);
+        publicacionDiv.appendChild(fechaPublicacion);
         publicacionDiv.appendChild(descripcionDiv);
 
         // Añadir la publicación al contenedor
-        publicacionesContainer.appendChild(publicacionDiv);
+        publicacionesContainer.prepend(publicacionDiv);
+
     });
 }
 
