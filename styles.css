@@ -101,12 +101,7 @@ border-radius: 10%;
     width: 50px;
     border-radius: 50%;
 }
-.imagen-final{
-    max-width: 100%;
-    min-height: 400px;
-    
 
-}
 .div-descripcion-publicacion{
     width: 100%;
     display: flex;
@@ -120,4 +115,9 @@ border-radius: 10%;
     width: 95%;
     margin-bottom: 5%;
     
+}
+.imagen-final{
+    max-width: 100%;
+    min-height: 400px;
+
 }
