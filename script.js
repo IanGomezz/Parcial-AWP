@@ -214,3 +214,22 @@ function getPublicaciones(cuentas, publicaciones) {
 obtenerDatos();
 
 
+function actualizarEstadoBoton() {
+  const btnPublicar=document.getElementById('boton-publicar')
+  if (navigator.onLine) {
+    btnPublicar.disabled = false; // Habilitar el botón si hay conexión
+    btnPublicar.textContent = 'Publicar'; // Cambiar el texto del botón (opcional)
+  } else {
+    btnPublicar.disabled = true;  // Deshabilitar el botón si no hay conexión
+    btnPublicar.textContent = 'Sin conexión'; // Cambiar el texto del botón (opcional)
+  }
+}
+
+// Detectar eventos de pérdida o recuperación de conectividad
+window.addEventListener('online', actualizarEstadoBoton);  // Se dispara cuando vuelve la conexión
+window.addEventListener('offline', actualizarEstadoBoton); // Se dispara cuando se pierde la conexión
+
+// Verificar el estado actual al cargar la página
+actualizarEstadoBoton();
+
+

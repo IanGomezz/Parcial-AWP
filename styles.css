@@ -1,3 +1,5 @@
+
+
 body{
     background-color: #fef7ff;
     margin: 0;
@@ -19,13 +21,21 @@ header{
     justify-content: space-between;
     align-items: center;
     background-color: #ffe5fe;
+    align-items: center;
 }
 #abrir-dialog{
     width: 15%;;
     margin-right: 2%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+h1 #icono{
+    width: 5%;
+    
 }
 #dialog-publicar{
-    height: 50vh; 
+    height: 100vh; 
     border: none;
     border-radius: 10%;
     width: 80%;
@@ -67,9 +77,9 @@ border-width: 1px;
 
 }
 #cerrar-dialog{
-    border: none;
     background: none;
-    max-width: 12%;
+    border: none;
+    width: 5%;
     display: flex;
     justify-content: center;
     position: absolute;
@@ -252,9 +262,9 @@ border-width: 1px;
 
 }
 #cerrar-dialog{
-    border: none;
     background: none;
-    max-width: 12%;
+    border: none;
+    width: 10%;
     display: flex;
     justify-content: center;
     position: absolute;
