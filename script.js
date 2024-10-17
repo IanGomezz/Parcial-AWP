@@ -17,7 +17,7 @@ const inputCamara = document.createElement('input');
 
 inputCamara.type = 'file';
 inputCamara.id = 'inputFile';
-inputCamara.accept = '.png, .jpeg, .webp';
+inputCamara.accept = '.png, .jpeg, .webp, .jpg';
 inputCamara.capture = 'environment';
 camara.addEventListener('click',()=>inputCamara.click())
 
