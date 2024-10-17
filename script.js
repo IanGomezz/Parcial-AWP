@@ -65,6 +65,7 @@ btnPublicar.addEventListener('click',()=>{
     const descripcion = inputDescripcion.value
     console.log(imagenBase64)
     const fechaPublicado=new Date();
+    const fechaFormateada = fechaPublicado.toLocaleDateString() + ' ' + fechaPublicado.toLocaleTimeString();
 
     //Metodo POST
   const nuevaPublicacion=
@@ -73,7 +74,7 @@ btnPublicar.addEventListener('click',()=>{
       descripcion: descripcion,
       id: "",
       idCuenta: "1",
-      fecha:fechaPublicado.toLocaleDateString(),
+      fecha:fechaFormateada,
       
     }
 
