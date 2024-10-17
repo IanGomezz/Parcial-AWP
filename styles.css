@@ -84,7 +84,7 @@ flex-direction: column;
 width: 80%;
 background-color: #7a7a7a;
 border-radius: 10%;
-min-height: 100vh;
+
 
 }
 .div-cabecera-publicacion{
@@ -101,7 +101,8 @@ min-height: 100vh;
     border-radius: 50%;
 }
 .imagen-final{
-    max-width: 80%;
+    max-width: 100%;
+    min-height: 400px;
 
 }
 .div-descripcion-publicacion{
